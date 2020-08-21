@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using ForumApp_TestTask.Models;
+using System.Net.Mail;
 
 namespace ForumApp_TestTask
 {
@@ -18,8 +19,30 @@ namespace ForumApp_TestTask
     {
         public Task SendAsync(IdentityMessage message)
         {
+            //#region Email validation
+
+            // personal data
+            var from = "pn.dev.ukr@gmail.com";
+            var password = "admin!Pan1";
+
+            SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = false;
+            client.Credentials = new System.Net.NetworkCredential(from, password);
+            client.EnableSsl = true;
+
+            var mail = new MailMessage(from, message.Destination);
+            mail.Subject = message.Subject;
+            mail.Body = message.Body;
+            mail.IsBodyHtml = true;
+
+            return client.SendMailAsync(mail);
+
+            //#endregion
+
             // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            // return Task.FromResult(0);
         }
     }
 
@@ -40,7 +63,8 @@ namespace ForumApp_TestTask
         {
         }
 
-        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
+        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options,
+                                                    IOwinContext context)
         {
             var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
             // Configure validation logic for usernames
@@ -54,7 +78,7 @@ namespace ForumApp_TestTask
             manager.PasswordValidator = new PasswordValidator
             {
                 RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
+                RequireNonLetterOrDigit = false,
                 RequireDigit = true,
                 RequireLowercase = true,
                 RequireUppercase = true,
@@ -81,7 +105,7 @@ namespace ForumApp_TestTask
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
-                manager.UserTokenProvider = 
+                manager.UserTokenProvider =
                     new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;

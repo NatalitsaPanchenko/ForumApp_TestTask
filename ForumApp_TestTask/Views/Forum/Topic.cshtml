@@ -5,13 +5,6 @@
 <h2>@ViewBag.Topic.Title</h2>
 
 <div class="row articles">
-    <div class="col-md-12 mb-10">
-        @Html.ActionLink("Add new article",
-                         "AddArticle",
-                         new { topicID = ViewBag.Topic.Id },
-                         new { @class = "btn btn-primary" })
-    </div>
-
     @if (ViewBag.Articles != null)
     {
         <div class="articles__list col-md-12">
@@ -34,15 +27,14 @@
                 </div>
             }
         </div>
-
-        <div class="col-md-12">
-            @Html.ActionLink("Add new article",
-                             "AddArticle",
-                             new { topicID = ViewBag.Topic.Id },
-                             new { @class = "btn btn-primary" })
-        </div>
     }
-
+    <div class="col-md-12">
+        @Html.ActionLink("Add new article",
+                         "AddArticle",
+                         new { topicID = ViewBag.Topic.Id },
+                         new { @class = "btn btn-primary" })
+        <a href="/Forum">Back</a>
+    </div>
 </div>
 
 

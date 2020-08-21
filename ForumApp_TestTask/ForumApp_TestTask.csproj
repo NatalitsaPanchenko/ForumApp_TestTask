@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -180,6 +181,10 @@
     <Compile Include="Migrations\202008211509361_AddArticleAndTopic.cs" />
     <Compile Include="Migrations\202008211509361_AddArticleAndTopic.Designer.cs">
       <DependentUpon>202008211509361_AddArticleAndTopic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008211610229_AppEmailConf.cs" />
+    <Compile Include="Migrations\202008211610229_AppEmailConf.Designer.cs">
+      <DependentUpon>202008211610229_AppEmailConf.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -249,6 +254,7 @@
     <Content Include="Views\Forum\AddArticle.cshtml" />
     <Content Include="Views\Forum\EditArticle.cshtml" />
     <Content Include="Views\Forum\Index.cshtml" />
+    <Content Include="Views\Account\DisplayEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -272,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008211509361_AddArticleAndTopic.resx">
       <DependentUpon>202008211509361_AddArticleAndTopic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008211610229_AppEmailConf.resx">
+      <DependentUpon>202008211610229_AppEmailConf.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
