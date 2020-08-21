@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Topic";
+}
+
+<h2>@ViewBag.Topic.Title</h2>
+
+<div class="row articles">
+    <div class="col-md-12 mb-10">
+        @Html.ActionLink("Add new article",
+                         "AddArticle",
+                         new { topicID = ViewBag.Topic.Id },
+                         new { @class = "btn btn-primary" })
+    </div>
+
+    @if (ViewBag.Articles != null)
+    {
+        <div class="articles__list col-md-12">
+            @foreach (var article in ViewBag.Articles)
+            {
+                <div class="panel panel-default articles__list-item row">
+                    <div class="panel-body panel-article-flex col-xs-12">
+                        <div class="panel-article-flex-item col-xs-12 col-sm-9">
+                            <p><small class="text-muted">author: @article.Author</small></p>
+                            <p>@article.Content</p>
+                        </div>
+                        <div class="panel-article-flex-item col-xs-12 col-sm-3">
+                            <p><small class="text-muted">last update at: @article.ArticleDate</small></p>
+                            @Html.ActionLink("Edit",
+                                             "EditArticle",
+                                              new { topicID = ViewBag.Topic.Id, articleID = article.Id },
+                                              new { @class = "btn btn-light" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="col-md-12">
+            @Html.ActionLink("Add new article",
+                             "AddArticle",
+                             new { topicID = ViewBag.Topic.Id },
+                             new { @class = "btn btn-primary" })
+        </div>
+    }
+
+</div>
+
+

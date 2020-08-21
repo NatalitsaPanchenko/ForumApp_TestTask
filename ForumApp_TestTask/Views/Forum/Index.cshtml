@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Forum";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <a href="/Forum/AddTopic" class="btn btn-primary">Add new topic</a>
+    </div>
+    @if (ViewBag.Topics != null)
+    {
+        <div class="col-md-12">
+            <div class="list-group">
+                @foreach (var topic in ViewBag.Topics)
+                {
+                    <a href="/Forum/Topic/@topic.Id" class="list-group-item list-group-item-text">
+                        @topic.Title
+                    </a>
+                }
+            </div>
+        </div>
+        <div class="col-md-12">
+            <a href="/Forum/AddTopic" class="btn btn-primary">Add new topic</a>
+        </div>
+    }
+</div>

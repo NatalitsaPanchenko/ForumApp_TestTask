@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Edit The Article";
+}
+
+<h2>EditArticle</h2>
+@if (ViewBag.article != null)
+{
+    <p><small class="text-muted">last update at: @ViewBag.article.UpdatedAt</small></p>
+    <form method="post">
+        <div class="form-group">
+            <textarea class="form-control mb-5" rows="5" maxlength="500" minlength="2" name="Content">@ViewBag.article.Content</textarea>
+            <button class="btn btn-primary" type="submit">Edit</button>
+            <a href="/Forum/Topic/@ViewBag.topic.Id">Back</a>
+        </div>
+    </form>
+}
+@if (ViewBag.editArticleError != null)
+{
+    <p>@ViewBag.editArticleError</p>
+    <a href="/Forum/Topic/@ViewBag.topic.Id">Back</a>
+}
