@@ -40,3 +40,6 @@ you will get something like this:
 ```
 
 #### 6. Build the project, launch and open your browser  
+
+#### 7. DB diagramm is in the file `DB_Diagram.svg`
+
