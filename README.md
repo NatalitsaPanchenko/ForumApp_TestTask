@@ -13,7 +13,7 @@ open solution file: `ForumApp_TestTask.sln`
 Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r
 ```
 
-#### 4. In the folder `Add_Data` create a new DB with some name:
+#### 4. Create the folder `Add_Data`, in this folder create a new DB with some name:
 your_DB_Name.mdf
 
 #### 5. In file `Web.config` find  `AttachDbFilename=|DataDirectory|\*****.mdf`;
